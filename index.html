@@ -3,21 +3,153 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kluzar — Site in Production</title>
+<title>Kluzar — Your Business, Online &amp; Managed | Website Agency &amp; SaaS</title>
+<meta name="description" content="Kluzar builds modern, fast websites for businesses that do not have one yet, hosts them, and manages SEO, social posts, reviews and AI. Serving worldwide.">
+<link rel="canonical" href="https://kluzar.com/">
+<meta property="og:title" content="Kluzar — Your Business, Online &amp; Managed">
+<meta property="og:description" content="Modern, fast websites, built and managed. Dashboard, SEO, social, AI and more. Serving worldwide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kluzar.com/">
+<meta name="theme-color" content="#141272">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23f1f2f6'/%3E%3Cpath d='M15 25 H75 L30 75 H85' fill='none' stroke='%23141272' stroke-width='10' stroke-linecap='round'/%3E%3Cpath d='M30 75 L75 25' stroke='%237c5cff' stroke-width='10' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1020;color:#eef2ff;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px}
-  .card{max-width:640px;text-align:center;background:#111832;border:1px solid #26325e;border-radius:20px;padding:48px 32px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-  h1{font-size:56px;margin:0 0 8px;letter-spacing:-1px} p{color:#b8c2e0;line-height:1.6;margin:12px 0}
-  .badge{display:inline-block;background:#1e3a8a;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
-  a{color:#93c5fd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#0b1020;color:#eef2ff;line-height:1.6}
+a{color:#a5b4fc}header{position:sticky;top:0;background:rgba(11,16,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid #26325e;z-index:10}
+.nav{max-width:1100px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.08em;font-size:20px}
+.logo svg{width:44px;height:32px}
+.navlinks{display:flex;gap:16px;flex-wrap:wrap;font-size:15px}
+.navlinks a{color:#c7d2fe;text-decoration:none}
+.btn{display:inline-block;background:#7c5cff;color:#fff;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:700;border:1px solid #7c5cff}
+.btn.secondary{background:transparent;color:#fff;border-color:#475569}
+main{max-width:1100px;margin:0 auto;padding:20px}
+.hero{text-align:center;padding:64px 20px 40px;animation:fadeUp .9s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.badge{display:inline-block;background:#1e3a8a;color:#fff;padding:8px 16px;border-radius:999px;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:52px;line-height:1.1;margin:20px 0 12px;letter-spacing:-1px}
+h1 span{color:#a78bfa}
+.lead{color:#b8c2e0;max-width:720px;margin:0 auto 24px;font-size:18px}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+section{padding:44px 0}
+h2{font-size:32px;margin:0 0 8px}
+.sub{color:#b8c2e0;margin:0 0 24px;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:#111832;border:1px solid #26325e;border-radius:16px;padding:22px}
+.card h3{margin:0 0 8px}
+.card p{color:#b8c2e0;margin:0 0 14px}
+.card a{font-weight:700}
+.light{background:#f1f2f6;color:#0b1020;border-radius:20px;padding:36px 28px}
+.light h2,.light .sub{color:#0b1020}
+.light .sub{color:#334155}
+.light .card{background:#fff;border-color:#e2e8f0}
+.light .card p{color:#475569}
+.light a{color:#4338ca}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.step{background:#111832;border:1px solid #26325e;border-radius:16px;padding:20px}
+.step strong{font-size:28px;color:#a78bfa}
+footer{border-top:1px solid #26325e;padding:32px 20px;color:#94a3b8;text-align:center}
+footer a{color:#c7d2fe}
+.subdomains{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0}
+.subdomains a{background:#111832;border:1px solid #26325e;border-radius:999px;padding:8px 14px;text-decoration:none;color:#e2e8fe}
+@media(max-width:640px){h1{font-size:36px}.navlinks{display:none}}
 </style>
 </head>
 <body>
-<main class="card">
-  <span class="badge">Site in Production</span>
-  <h1>Kluzar</h1>
-  <p>Our new website is in production and will be live here soon.</p>
-  <p>Contact: <a href="mailto:info@kluzar.com">info@kluzar.com</a></p>
+<header>
+  <div class="nav">
+    <a class="logo" href="https://kluzar.com/" aria-label="Kluzar home">
+      <svg viewBox="0 0 100 70" aria-hidden="true"><rect x="8" y="8" width="84" height="12" rx="6" fill="#a78bfa"/><rect x="8" y="50" width="84" height="12" rx="6" fill="#a78bfa"/><path d="M18 62 L82 8" stroke="#7c5cff" stroke-width="12" stroke-linecap="round"/><path d="M82 8 L82 26 L64 14 Z" fill="#7c5cff"/></svg>
+      KLUZAR
+    </a>
+    <nav class="navlinks" aria-label="Main">
+      <a href="https://services.kluzar.com/">Services</a>
+      <a href="https://pricing.kluzar.com/">Pricing</a>
+      <a href="https://work.kluzar.com/">Work</a>
+      <a href="https://contact.kluzar.com/">Contact</a>
+    </nav>
+    <a class="btn" href="https://dashboard.kluzar.com/">Client Login</a>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <span class="badge">Website Agency + SaaS — Serving Worldwide</span>
+    <h1>Your Business, <span>Online &amp; Managed.</span></h1>
+    <p class="lead">Kluzar builds a modern, fast website for businesses that do not have one yet, hosts it, and keeps it working — SEO, social posts, reviews and AI, all managed for you.</p>
+    <div class="ctas">
+      <a class="btn" href="https://contact.kluzar.com/">Get Your Website</a>
+      <a class="btn secondary" href="https://services.kluzar.com/">View Services</a>
+      <a class="btn secondary" href="https://app.kluzar.com/">Open App</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="services">
+    <h2 id="services">Everything on one hub, each service on its own subdomain</h2>
+    <p class="sub">This front page is the hub. Click a service and you go to its own subdomain, so the main site stays fast and undisturbed.</p>
+    <div class="grid">
+      <div class="card"><h3>Website Build</h3><p>Modern, premium, fast websites, built from scratch for your business.</p><a href="https://services.kluzar.com/">Services →</a></div>
+      <div class="card"><h3>Dashboard &amp; Management</h3><p>Orders, bookings, customers, reviews, posts and analytics in one dashboard.</p><a href="https://dashboard.kluzar.com/">Dashboard →</a></div>
+      <div class="card"><h3>SEO</h3><p>Proper on-page SEO, sitemaps and Search Console, so customers can find you.</p><a href="https://services.kluzar.com/">SEO →</a></div>
+      <div class="card"><h3>Social &amp; Posts</h3><p>Daily posts and Shorts, planned and published for you.</p><a href="https://services.kluzar.com/">Social →</a></div>
+      <div class="card"><h3>AI Management</h3><p>AI systems, review analysis and business automation, with costs controlled.</p><a href="https://services.kluzar.com/">AI →</a></div>
+      <div class="card"><h3>Review Analysis</h3><p>See what customers say, and what to fix next, in plain language.</p><a href="https://dashboard.kluzar.com/">Reviews →</a></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="how">
+    <h2 id="how">How it works</h2>
+    <div class="steps">
+      <div class="step"><strong>1</strong><h3>Tell us about your business</h3><p>Contact us, and we plan your site, services and launch.</p></div>
+      <div class="step"><strong>2</strong><h3>We design &amp; build</h3><p>Modern, attractive, fast design, built on secure, free-tier hosting where possible.</p></div>
+      <div class="step"><strong>3</strong><h3>We launch it</h3><p>Your site goes live on its own subdomain, with SEO set up.</p></div>
+      <div class="step"><strong>4</strong><h3>We manage it</h3><p>Minimum changes, SEO, posts and AI, done for you on request and on plan.</p></div>
+    </div>
+  </section>
+
+  <section class="light" aria-labelledby="saas">
+    <h2 id="saas">Kluzar SaaS — decided from the start</h2>
+    <p class="sub">A monthly dashboard for clients who want more than a website. By default you get the site, and minimum changes are done for you on request. Full self-editing and AI are higher-tier, so costs stay controlled.</p>
+    <div class="grid">
+      <div class="card"><h3>Client Dashboard</h3><p>One login for your website, orders and customers.</p></div>
+      <div class="card"><h3>Orders &amp; Bookings</h3><p>Track orders and bookings without spreadsheets.</p></div>
+      <div class="card"><h3>Customers &amp; Reviews</h3><p>Customers, reviews and review analysis in one place.</p></div>
+      <div class="card"><h3>Posts &amp; Analytics</h3><p>Posts, social visibility and simple analytics.</p></div>
+      <div class="card"><h3>AI Systems</h3><p>AI management and limited AI chat in premium tiers only.</p></div>
+      <div class="card"><h3>Admin</h3><p>Separate admin system for Kluzar, so client sites stay separate and secure.</p></div>
+    </div>
+    <p><a href="https://pricing.kluzar.com/">See pricing →</a> &nbsp; <a href="https://app.kluzar.com/">Open the app →</a></p>
+  </section>
+
+  <section aria-labelledby="subdomains">
+    <h2 id="subdomains">All Kluzar subdomains</h2>
+    <p class="sub">Click any subdomain to go there. Some are live now, some are placeholders that will point to their own service as it launches.</p>
+    <div class="subdomains">
+      <a href="https://contact.kluzar.com/">contact.kluzar.com</a>
+      <a href="https://services.kluzar.com/">services.kluzar.com</a>
+      <a href="https://pricing.kluzar.com/">pricing.kluzar.com</a>
+      <a href="https://work.kluzar.com/">work.kluzar.com</a>
+      <a href="https://blog.kluzar.com/">blog.kluzar.com</a>
+      <a href="https://app.kluzar.com/">app.kluzar.com</a>
+      <a href="https://dashboard.kluzar.com/">dashboard.kluzar.com</a>
+      <a href="https://admin.kluzar.com/">admin.kluzar.com</a>
+      <a href="https://api.kluzar.com/">api.kluzar.com</a>
+      <a href="https://support.kluzar.com/">support.kluzar.com</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">Contact Kluzar</h2>
+    <p class="sub">Serving worldwide. For a new website, a dashboard, or ongoing management, contact us:</p>
+    <p>Phone / WhatsApp: <a href="tel:+923285049744">+92 328 5049744</a><br>
+    Email: <a href="mailto:info@kluzar.com">info@kluzar.com</a><br>
+    Location: Serving worldwide</p>
+    <p><a class="btn" href="https://contact.kluzar.com/">Contact Form →</a></p>
+    <p>Social accounts and daily posts, including YouTube Shorts, are being set up from kluzar.official@gmail.com and will be linked here once live. No fake social links are published yet.</p>
+  </section>
 </main>
+<footer>
+  <p><strong>KLUZAR</strong> — Your Business, Online &amp; Managed.</p>
+  <p>Security first. Fast, modern, and built for search. &nbsp; <a href="https://kluzar.com/">kluzar.com</a></p>
+  <p>© Kluzar. All rights reserved.</p>
+</footer>
 </body>
 </html>
