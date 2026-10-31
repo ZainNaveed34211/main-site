@@ -1,4 +1,4 @@
-const ACCESS_KEY = "__WEB3FORMS_ACCESS_KEY__";
+const ACCESS_KEY = "037a0a66-b5c1-420b-a206-0d74134ccd54";
 const form = document.getElementById("contact-form");
 const msg = document.getElementById("form-msg");
 const btn = document.getElementById("submit-btn");
