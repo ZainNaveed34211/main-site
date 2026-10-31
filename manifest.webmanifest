@@ -1,1 +1,28 @@
-{"background_color":"#070b1d","description":"Modern, fast websites and SaaS. Dashboard, SEO, social, AI and review analysis. Serving worldwide.","display":"standalone","icons":[{"purpose":"any","sizes":"any","src":"/favicon.svg","type":"image/svg+xml"},{"purpose":"maskable","sizes":"any","src":"/favicon.svg","type":"image/svg+xml"}],"name":"Kluzar — Your Business, Online & Managed","orientation":"portrait-primary","scope":"/","short_name":"Kluzar","start_url":"/","theme_color":"#141272"}
+{
+  "name": "Kluzar",
+  "short_name": "Kluzar",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E9E8E8",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x445",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "kluzar-dp.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "1200x600",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
