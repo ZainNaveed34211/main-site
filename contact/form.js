@@ -9,11 +9,16 @@ function setMsg(text, ok) {
 function validEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
+function normalizeUrl(v) {
+  if (!v) return "";
+  if (/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) return v;
+  return "https://" + v;
+}
 function validUrl(v) {
   if (!v) return true;
   try {
-    const u = new URL(v);
-    return u.protocol === "http:" || u.protocol === "https:";
+    const u = new URL(normalizeUrl(v));
+    return (u.protocol === "http:" || u.protocol === "https:") && u.hostname.indexOf(".") !== -1;
   } catch (e) {
     return false;
   }
@@ -22,11 +27,11 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
-  const website = document.getElementById("website").value.trim();
+  const website = normalizeUrl(document.getElementById("website").value.trim());
   const message = document.getElementById("message").value.trim();
   if (!name) { setMsg("Please enter your name.", false); return; }
   if (!validEmail(email)) { setMsg("Please enter a valid email address.", false); return; }
-  if (!validUrl(website)) { setMsg("Please enter a valid website address starting with http:// or https://, or leave it blank.", false); return; }
+  if (!validUrl(website)) { setMsg("Please enter a valid website address, or leave it blank.", false); return; }
   if (!message) { setMsg("Please tell us about your project.", false); return; }
   if (ACCESS_KEY === "__WEB3FORMS_ACCESS_KEY__") {
     setMsg("The contact form is not configured yet. Please email us at info@kluzar.com instead.", false);
