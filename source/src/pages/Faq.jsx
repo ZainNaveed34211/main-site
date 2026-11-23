@@ -4,6 +4,7 @@ import WhatsAppButton from "../components/WhatsAppButton.jsx";
 import Reveal from "../components/Reveal.jsx";
 import FaqList from "../components/FaqList.jsx";
 import { useReveal } from "../lib/reveal.js";
+import faqLd from "../lib/faqLd.json";
 
 const faqItems = [
   {
@@ -52,7 +53,7 @@ export default function Faq() {
   const ref = useReveal();
   return (
     <div ref={ref}>
-      <script type="application/ld+json" src="/faq-ld.json" />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

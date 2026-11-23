@@ -19,7 +19,16 @@ export default function Footer() {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/#services">Services</a>
+                <a href="/services/">Services</a>
+              </li>
+              <li>
+                <a href="/tech/">Tech Tools</a>
+              </li>
+              <li>
+                <a href="/work/">Work</a>
+              </li>
+              <li>
+                <a href="/about/">About</a>
               </li>
               <li>
                 <a href="/#pricing">Pricing</a>
@@ -36,13 +45,22 @@ export default function Footer() {
             <h3>Kluzar</h3>
             <ul>
               <li>
-                <a href="https://dash.kluzar.com">Dashboard</a>
+                <a href="https://dash.kluzar.com/">Dashboard</a>
               </li>
               <li>
-                <a href="https://payments.kluzar.com">Payments</a>
+                <a href="https://payments.kluzar.com/">Payments</a>
+              </li>
+              <li>
+                <a href="https://blog.kluzar.com/">Blog</a>
+              </li>
+              <li>
+                <a href="https://tech.kluzar.com/">Tech Tools</a>
               </li>
               <li>
                 <a href="https://support.kluzar.com">Support</a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@kluzar.official">YouTube</a>
               </li>
               <li>
                 <a href="mailto:info@kluzar.com">info@kluzar.com</a>
@@ -52,6 +70,14 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© Kluzar, 2026.</span>
+          <nav className="footer-legal" aria-label="Legal">
+            <a href="/privacy/">Privacy</a>
+            <a href="/terms/">Terms</a>
+            <a href="/refund/">Refund</a>
+            <a href="/payment-terms/">Payment Terms</a>
+            <a href="/disclaimer/">Disclaimer</a>
+            <a href="/sitemap/">Sitemap</a>
+          </nav>
           <span>Sialkot, Pakistan — Serving businesses worldwide.</span>
         </div>
       </div>
