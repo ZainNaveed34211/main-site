@@ -47,7 +47,7 @@
     box.style.display = 'block';
   }
   function hideAllBoxes() {
-    document.querySelectorAll('input[data-site-search]').forEach(function (input) {
+    document.querySelectorAll('input.kluzar-search-input').forEach(function (input) {
       var box = input._kluzarSearchBox;
       if (box) box.style.display = 'none';
     });
@@ -136,18 +136,18 @@
   }
   document.addEventListener('input', function (e) {
     var input = e.target;
-    if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
+    if (!input || !input.matches || !input.matches('input.kluzar-search-input')) return;
     runSearch(input);
   });
   document.addEventListener('keyup', function (e) {
     var input = e.target;
-    if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
+    if (!input || !input.matches || !input.matches('input.kluzar-search-input')) return;
     if (e.key === 'Escape') return;
     runSearch(input);
   });
   document.addEventListener('focusin', function (e) {
     var input = e.target;
-    if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
+    if (!input || !input.matches || !input.matches('input.kluzar-search-input')) return;
     if (!input.value.trim()) showPopular(input);
   });
   document.addEventListener('click', function (e) {
@@ -165,7 +165,7 @@
     }, 0);
   });
   document.addEventListener('click', function (e) {
-    document.querySelectorAll('input[data-site-search]').forEach(function (input) {
+    document.querySelectorAll('input.kluzar-search-input').forEach(function (input) {
       var box = input._kluzarSearchBox;
       if (box && box.style.display !== 'none') {
         if (!box.contains(e.target) && e.target !== input) box.style.display = 'none';
@@ -178,7 +178,7 @@
   });
   document.addEventListener('scroll', function () { hideAllBoxes(); }, true);
   window.addEventListener('resize', function () {
-    document.querySelectorAll('input[data-site-search]').forEach(function (input) {
+    document.querySelectorAll('input.kluzar-search-input').forEach(function (input) {
       var box = input._kluzarSearchBox;
       if (box && box.style.display !== 'none') positionBox(box);
     });
