@@ -23,11 +23,34 @@
     if (box && box.isConnected) return box;
     box = document.createElement('div');
     box.className = 'kluzar-search-results';
-    box.style.cssText = 'position:absolute;z-index:10000;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);max-width:340px;width:100%;overflow:hidden;display:none;text-align:left';
-    var wrap = input.parentElement;
-    if (wrap) { if (getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative'; wrap.appendChild(box); }
+    box.style.cssText = 'position:fixed;z-index:10000;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.15);max-width:340px;overflow:hidden;display:none;text-align:left';
+    box._kluzarInput = input;
+    document.body.appendChild(box);
     input._kluzarSearchBox = box;
     return box;
+  }
+  function positionBox(box) {
+    var input = box._kluzarInput;
+    if (!input) return false;
+    var r = input.getBoundingClientRect();
+    if (!r || r.width === 0 || r.height === 0) return false;
+    var w = Math.min(r.width, 340);
+    var left = Math.min(r.left, window.innerWidth - w - 8);
+    if (left < 8) left = 8;
+    box.style.width = w + 'px';
+    box.style.left = left + 'px';
+    box.style.top = (r.bottom + 8) + 'px';
+    return true;
+  }
+  function showBox(box) {
+    if (!positionBox(box)) { box.style.display = 'none'; return; }
+    box.style.display = 'block';
+  }
+  function hideAllBoxes() {
+    document.querySelectorAll('input[data-site-search]').forEach(function (input) {
+      var box = input._kluzarSearchBox;
+      if (box) box.style.display = 'none';
+    });
   }
   function clearBox(box) {
     while (box.firstChild) box.removeChild(box.firstChild);
@@ -54,7 +77,7 @@
       var link = resultLink(p);
       if (link) box.appendChild(link);
     });
-    box.style.display = 'block';
+    showBox(box);
   }
   function showMessage(box, text) {
     clearBox(box);
@@ -62,7 +85,7 @@
     div.setAttribute('style', 'padding:10px 14px;color:#6b7280;font:14px system-ui,sans-serif');
     div.textContent = text;
     box.appendChild(div);
-    box.style.display = 'block';
+    showBox(box);
   }
   function scoreEntry(p, q) {
     var t = (p.title || '').toLowerCase();
@@ -88,7 +111,7 @@
         var link = resultLink(p);
         if (link) box.appendChild(link);
       });
-      box.style.display = 'block';
+      showBox(box);
     });
   }
   function runSearch(input) {
@@ -131,9 +154,13 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
+    hideAllBoxes();
+  });
+  document.addEventListener('scroll', function () { hideAllBoxes(); }, true);
+  window.addEventListener('resize', function () {
     document.querySelectorAll('input[data-site-search]').forEach(function (input) {
       var box = input._kluzarSearchBox;
-      if (box) box.style.display = 'none';
+      if (box && box.style.display !== 'none') positionBox(box);
     });
   });
 })();
