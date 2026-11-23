@@ -139,10 +139,30 @@
     if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
     runSearch(input);
   });
+  document.addEventListener('keyup', function (e) {
+    var input = e.target;
+    if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
+    if (e.key === 'Escape') return;
+    runSearch(input);
+  });
   document.addEventListener('focusin', function (e) {
     var input = e.target;
     if (!input || !input.matches || !input.matches('input[data-site-search]')) return;
     if (!input.value.trim()) showPopular(input);
+  });
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest ? e.target.closest('.kluzar-search-toggle') : null;
+    if (!t) return;
+    setTimeout(function () {
+      var w = t.closest('.kluzar-search');
+      if (!w) return;
+      var input = w.querySelector('.kluzar-search-input');
+      if (!input) return;
+      if (input.value.trim()) return;
+      var r = input.getBoundingClientRect();
+      if (!r || r.width === 0 || r.height === 0) return;
+      showPopular(input);
+    }, 0);
   });
   document.addEventListener('click', function (e) {
     document.querySelectorAll('input[data-site-search]').forEach(function (input) {
