@@ -7,6 +7,17 @@
     }
     return loading;
   }
+  function safeUrl(u) {
+    if (typeof u !== 'string') return null;
+    if (u.charAt(0) === '/') {
+      if (u.charAt(1) === '/') return null;
+      return u;
+    }
+    if (u.indexOf('https://kluzar.com/') === 0) return u;
+    if (u.indexOf('https://tech.kluzar.com/') === 0) return u;
+    if (u.indexOf('https://blog.kluzar.com/') === 0) return u;
+    return null;
+  }
   function boxFor(input) {
     var box = input._kluzarSearchBox;
     if (box && box.isConnected) return box;
@@ -18,8 +29,39 @@
     input._kluzarSearchBox = box;
     return box;
   }
+  function clearBox(box) {
+    while (box.firstChild) box.removeChild(box.firstChild);
+  }
+  function resultLink(p) {
+    var url = safeUrl(p.url);
+    if (!url) return null;
+    var a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('style', 'display:block;padding:10px 14px;text-decoration:none;color:#111827;font:14px system-ui,sans-serif;border-top:1px solid #f3f4f6');
+    var strong = document.createElement('strong');
+    strong.textContent = p.title || '';
+    a.appendChild(strong);
+    a.appendChild(document.createElement('br'));
+    var span = document.createElement('span');
+    span.setAttribute('style', 'color:#6b7280;font-size:12px');
+    span.textContent = p.description || '';
+    a.appendChild(span);
+    return a;
+  }
   function renderHits(box, hits) {
-    box.innerHTML = hits.map(function (p) { return '<a href="' + p.url + '" style="display:block;padding:10px 14px;text-decoration:none;color:#111827;font:14px system-ui,sans-serif;border-top:1px solid #f3f4f6"><strong>' + p.title + '</strong><br><span style="color:#6b7280;font-size:12px">' + p.description + '</span></a>'; }).join('');
+    clearBox(box);
+    hits.forEach(function (p) {
+      var link = resultLink(p);
+      if (link) box.appendChild(link);
+    });
+    box.style.display = 'block';
+  }
+  function showMessage(box, text) {
+    clearBox(box);
+    var div = document.createElement('div');
+    div.setAttribute('style', 'padding:10px 14px;color:#6b7280;font:14px system-ui,sans-serif');
+    div.textContent = text;
+    box.appendChild(div);
     box.style.display = 'block';
   }
   function scoreEntry(p, q) {
@@ -37,8 +79,15 @@
     loadIndex().then(function (pages) {
       var popular = pages.filter(function (p) { return p.popular; }).slice(0, 8);
       if (!popular.length) { box.style.display = 'none'; return; }
-      var head = '<div style="padding:10px 14px 4px;color:#6b7280;font:12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em">Popular searches</div>';
-      box.innerHTML = head + popular.map(function (p) { return '<a href="' + p.url + '" style="display:block;padding:10px 14px;text-decoration:none;color:#111827;font:14px system-ui,sans-serif;border-top:1px solid #f3f4f6"><strong>' + p.title + '</strong><br><span style="color:#6b7280;font-size:12px">' + p.description + '</span></a>'; }).join('');
+      clearBox(box);
+      var head = document.createElement('div');
+      head.setAttribute('style', 'padding:10px 14px 4px;color:#6b7280;font:12px system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em');
+      head.textContent = 'Popular searches';
+      box.appendChild(head);
+      popular.forEach(function (p) {
+        var link = resultLink(p);
+        if (link) box.appendChild(link);
+      });
       box.style.display = 'block';
     });
   }
@@ -58,7 +107,7 @@
         return a.i - b.i;
       });
       var hits = scored.slice(0, 8).map(function (x) { return x.p; });
-      if (!hits.length) { box.innerHTML = '<div style="padding:10px 14px;color:#6b7280;font:14px system-ui,sans-serif">No results found.</div>'; box.style.display = 'block'; return; }
+      if (!hits.length) { showMessage(box, 'No results found.'); return; }
       renderHits(box, hits);
     });
   }
