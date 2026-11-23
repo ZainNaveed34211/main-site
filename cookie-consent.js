@@ -14,7 +14,26 @@
   bar.id = 'kluzar-cookie-banner';
   bar.setAttribute('role', 'dialog');
   bar.setAttribute('aria-label', 'Cookie consent');
-  bar.innerHTML = '<p>We use cookies to improve your experience and to show ads and measure traffic. You can accept or decline — see our <a href="/privacy.html">Privacy Policy</a> for details.</p><div><button type="button" data-cc="accept">Accept</button><button type="button" data-cc="decline">Decline</button></div>';
+  var p = document.createElement('p');
+  p.appendChild(document.createTextNode('We use cookies to improve your experience and to show ads and measure traffic. You can accept or decline — see our '));
+  var a = document.createElement('a');
+  a.setAttribute('href', '/privacy.html');
+  a.textContent = 'Privacy Policy';
+  p.appendChild(a);
+  p.appendChild(document.createTextNode(' for details.'));
+  bar.appendChild(p);
+  var btns = document.createElement('div');
+  var accept = document.createElement('button');
+  accept.setAttribute('type', 'button');
+  accept.setAttribute('data-cc', 'accept');
+  accept.textContent = 'Accept';
+  btns.appendChild(accept);
+  var decline = document.createElement('button');
+  decline.setAttribute('type', 'button');
+  decline.setAttribute('data-cc', 'decline');
+  decline.textContent = 'Decline';
+  btns.appendChild(decline);
+  bar.appendChild(btns);
   var css = '#kluzar-cookie-banner{position:fixed;left:16px;bottom:16px;z-index:9999;max-width:420px;background:#141272;color:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:14px/1.5 system-ui,sans-serif}'
     + '#kluzar-cookie-banner p{margin:0 0 12px}'
     + '#kluzar-cookie-banner a{color:#b7a8ff;text-decoration:underline}'
